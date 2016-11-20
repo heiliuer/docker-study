@@ -37,3 +37,11 @@
         or
         
         `docker run heiliuer/docker-whale`
+        
+6. 后台一直运行ubuntu
+
+    `docker run --name ubuntu -d ubuntu /bin/sh -c "while true; do ping 8.8.8.8; done"`
+    
+    `docker log ubuntu` 查看container 日志docker 命令 的输出
+    
+    `docker exec -it ubuntu /bin/bash` 执行ubuntu的shell，进行shell交互

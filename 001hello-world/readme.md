@@ -38,6 +38,10 @@
     - `docker version` 
         
         > 查看docker的版本信息
+        
+    - `docker logs <container-id>` 
+        
+        > 查看container 执行命令的输出
     
     - `docker run helo-world` 
         
@@ -46,6 +50,8 @@
         ![](screenshot/docker_run_hello_world.png)
         
     - `docker run -d -p 80:80 --name webserver nginx` 
+    
+        > -d 以守护线程运行，运行在后台
         
         > 从docker hub pull nginx镜像，部署到docker container（containner取名webserver）中，映射本机端口80到容器端口80
         
