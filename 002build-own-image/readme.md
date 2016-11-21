@@ -45,3 +45,7 @@
     `docker log ubuntu` 查看container 日志docker 命令 的输出
     
     `docker exec -it ubuntu /bin/bash` 执行ubuntu的shell，进行shell交互
+    
+7. docker 官方的 image repository 在国内很慢，可以使用国内docker.io的repository
+
+    `docker pull daocloud.io/library/ubuntu`
