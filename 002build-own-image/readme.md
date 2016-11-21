@@ -40,11 +40,16 @@
         
 6. 后台一直运行ubuntu
 
+    > -d To start a container in detached mode, you use -d=true or just -d option. By design, containers started in detached mode exit when the root process used to run the container exits. A container in detached mode cannot be automatically removed when it stops, this means you cannot use the --rm option with -d option.
+    
+    > --rm container automatically removed when it stops
+
     `docker run --name ubuntu -d ubuntu /bin/sh -c "while true; do ping 8.8.8.8; done"`
     
     `docker log ubuntu` 查看container 日志docker 命令 的输出
     
     `docker exec -it ubuntu /bin/bash` 执行ubuntu的shell，进行shell交互
+    
     
 7. docker 官方的 image repository 在国内很慢，可以使用国内docker.io的repository
 
