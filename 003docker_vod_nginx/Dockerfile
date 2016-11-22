@@ -1,15 +1,22 @@
 
 # Pull base image.
-FROM daocloud.io/library/ubuntu:latest
+FROM heiliuer/alpine_python_nginx
 
-# Install Python.
-RUN \
-  apt-get update && \
-  apt-get install -y python python-dev python-pip python-virtualenv && \
-  apt-get install -y nginx && \
-  rm -rf /var/lib/apt/lists/*
+ENV work_dir /opt/vod-server
 
-ADD . /opt/vode-server
+ENV ng_confs /etc/nginx/conf.d/
 
-# Define default command.
-CMD ["bash"]
+WORKDIR ${work_dir}
+
+COPY nginx.conf /etc/nginx/nginx.conf
+
+COPY vod-server ${work_dir}
+
+COPY nginx-conf ${ng_confs}
+
+ENV PORT 9999
+
+# Expose ports.
+EXPOSE ${PORT}
+
+CMD ["nginx"]

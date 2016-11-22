@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>悦动影视</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <link rel="stylesheet" href="vendor/sm.css">
+    <link rel="stylesheet" href="vendor/sm-extend.css">
+    <link rel="stylesheet" href="vendor/animate.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="app">
+
+    <div class="page-group">
+        <div class="page">
+
+            <template id="list-compo">
+                <ul>
+                    <template v-for="file in data.files">
+                        <li :class="{'play':playUid==file.uid}" data-uid="file.uid">
+                            <div class="item-content">
+                                <div class="item-media" @click="showImg(file.thumb_path)">
+                                    <img :src="file.thumb_path" style='width: 2.2rem;'>
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div @click="refresh(data,file,$event)" class="item-title">
+                                            <span v-text="file.name"></span>
+                                            <span v-if="file.info.size">
+                                                {{file.info.size[0]}}_{{file.info.size[1]}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="item-subtitle">
+                                        <span v-text="file.ctime| date '%Y-%m-%d'"></span>
+                                        <span class="action-search"
+                                              @click="showItemKeysAction(file.name)">搜索</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+
+            <div class="content">
+                <div class="video">
+                    <video id="video" width="100%" src="" autoplay controls></video>
+                </div>
+                <div class="buttons-tab">
+                    <a href="#tab_search" class="tab-link active button">搜索</a>
+                    <template v-for="(index,data) in datas">
+                        <a href="#tab{{index}}" class="tab-link  button" v-text="data.name"></a>
+                    </template>
+                </div>
+                <div class="tabs">
+                    <div id="tab_search" class="tab active">
+
+                        <div class="content-padded">
+                            <div class="searchbar row">
+                                <a @click="showAction" class="button button-fill button-primary col-15">历史</a>
+                                <div class="search-input col-85">
+                                    <label @click="clear" class="icon icon-remove"></label>
+                                    <input lazy v-model="searchKey" type="search" id='search' placeholder='输入关键字...'/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="list-block media-list">
+                            <template v-for="data in searchFiles" v-if="data.files.length>0">
+                                <div class="content-block-title" v-text="data.folder"></div>
+                                <list :play-uid="playUid" :data="data"></list>
+                            </template>
+                        </div>
+
+                    </div>
+
+                    <template v-for="(index,data) in datas">
+                        <div id="tab{{index}}" class="tab">
+                            <div class="list-block media-list">
+                                <list :play-uid="playUid" :data="data"></list>
+                            </div>
+                        </div>
+                    </template>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="vendor/zepto.js"></script>
+<script>
+    $.config = {
+        router: false
+    };
+</script>
+<script src="vendor/sm.js"></script>
+<script src="vendor/sm-extend.js"></script>
+<script src="vendor/vue.js"></script>
+<script src="vendor/vue-filter.min.js"></script>
+<script src="index.js"></script>
+</html>

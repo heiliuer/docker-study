@@ -83,4 +83,14 @@
 
     ![](screenshots/2016-11-23_011829.png)
     
-    ![](screenshots/2016-11-23_012011.png)
+    ![](screenshots/2016-11-23_012011.png)    
+    
+10. 复制内容 
+
+    `docker run --rm -it -v C:\Users\work:/opt/work ubuntu:14.04`   
+    
+    > Bind mount a volume
+     
+10. 查看命令帮助 
+
+    `docker run --help`
