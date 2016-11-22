@@ -28,7 +28,9 @@
     
     - remove image
         
-        `docker rmi -f <image name> or <image name>`
+        `docker rmi -f <image name> or <repository<:tag>>`
+        
+        > -f 强制删除，被依赖也会删除
         
     - pull and run image
     
@@ -48,9 +50,37 @@
     
     `docker log ubuntu` 查看container 日志docker 命令 的输出
     
-    `docker exec -it ubuntu /bin/bash` 执行ubuntu的shell，进行shell交互
+    `docker exec -it ubuntu(<repo:tag or image-id>) /bin/bash` 执行container的shell，进行shell交互(需要container在running)
+    
+    `docker run -i -t ubuntu(<repo:tag or image-id>) /bin/bash` 执行container的shell，进行shell交互(针对container没有running)
+    
+     > -t, --tty Allocate a pseudo-TTY (指定一个虚拟终端)
+     
+     > -i Keep STDIN open even if not attached
+    
     
     
 7. docker 官方的 image repository 在国内很慢，可以使用国内docker.io的repository
 
     `docker pull daocloud.io/library/ubuntu`
+    
+7. docker 修改镜像的 repository
+
+    `docker tag <image name or repository<:tag>> <new-repository<:tag>>`
+    
+    > repository 和 new-repository 共用一个image 可以删除旧的 repository
+    
+    `docker rmi repository<:tag>>`
+    
+9. 提交
+
+    `docker commit <container id> heiliuer/heiliuer-ubuntu:version1`
+    
+    `docker commit <container id> heiliuer/heiliuer-ubuntu:latest`
+    
+    
+10. 使用  Kitematic 图形界面 管理container  
+
+    ![](screenshots/2016-11-23_011829.png)
+    
+    ![](screenshots/2016-11-23_012011.png)
