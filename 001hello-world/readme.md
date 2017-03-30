@@ -5,7 +5,21 @@
         Hardware assisted virtualization and data execution protection must be enabled in the BIOS
 
     > 重启进入bios，cpu设置选项中开启intel visualization
+   
+    - window 10
     
+        直接安装最新docker
+    
+    - window 7
+        
+        安装docker toolbox
+    
+    - ubuntu 1404
+        
+        `apt-get install docker.io`
+        
+        [参考](https://www.liquidweb.com/kb/how-to-install-docker-on-ubuntu-14-04-lts/)
+        
     
 2. 运行helloworld
     
