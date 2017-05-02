@@ -50,7 +50,7 @@
     
     `docker log ubuntu` 查看container 日志docker 命令 的输出
     
-    `docker exec -it ubuntu(<repo:tag or image-id>) /bin/bash` 执行container的shell，进行shell交互(需要container在running)
+    `docker exec -it ubuntu(<container id>) /bin/bash` 执行container的shell，进行shell交互(需要container在running)
     
     `docker run -i -t ubuntu(<repo:tag or image-id>) /bin/bash` 执行container的shell，进行shell交互(针对container没有running)
     
